@@ -2,7 +2,7 @@ import { Card } from "@mui/material";
 import { Product } from "src/types/product";
 import RecentOrdersTable from "./RecentOrdersTable";
 
-function RecentOrders() {
+function ProductsList() {
   const products: Product[] = [
     {
       _id: "1",
@@ -41,4 +41,4 @@ function RecentOrders() {
   );
 }
 
-export default RecentOrders;
+export default ProductsList;
