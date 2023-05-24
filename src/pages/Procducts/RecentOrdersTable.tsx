@@ -5,8 +5,6 @@ import {
   Tooltip,
   Divider,
   Box,
-  FormControl,
-  InputLabel,
   Card,
   Checkbox,
   IconButton,
@@ -17,8 +15,6 @@ import {
   TablePagination,
   TableRow,
   TableContainer,
-  Select,
-  MenuItem,
   Typography,
   useTheme,
   CardHeader,
@@ -177,7 +173,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ products }) => {
               </FormControl> */}
             </Box>
           }
-          title="제품관리"
+          title="제품목록"
         />
       )}
       <Divider />

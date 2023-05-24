@@ -14,9 +14,9 @@ const Loader = (Component) => (props) =>
     </Suspense>
   );
 
-// Applications
+// pages
 
-const Product = Loader(lazy(() => import("./applications/Procducts")));
+const Product = Loader(lazy(() => import("./pages/Procducts")));
 
 const routes: RouteObject[] = [
   {
