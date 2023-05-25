@@ -18,6 +18,10 @@ import {
   Typography,
   useTheme,
   CardHeader,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 
 import Label from "../../components/Label";
@@ -156,10 +160,10 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ products }) => {
         <CardHeader
           action={
             <Box width={150}>
-              {/* <FormControl fullWidth variant="outlined">
+              <FormControl fullWidth variant="outlined">
                 <InputLabel>공개여부</InputLabel>
                 <Select
-                  value={filters.status || "all"}
+                  value={filters.status || "전체"}
                   onChange={handleStatusChange}
                   label="Status"
                   autoWidth
@@ -170,7 +174,7 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ products }) => {
                     </MenuItem>
                   ))}
                 </Select>
-              </FormControl> */}
+              </FormControl>
             </Box>
           }
           title="제품목록"
@@ -189,17 +193,61 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ products }) => {
                   onChange={handleSelectAllProducts}
                 />
               </TableCell>
-              <TableCell>NO</TableCell>
-              <TableCell>제품명</TableCell>
-              <TableCell>사이즈</TableCell>
-              <TableCell>용량</TableCell>
-              <TableCell>소재</TableCell>
-              <TableCell>설명</TableCell>
-              <TableCell>대분류</TableCell>
-              <TableCell>중분류</TableCell>
-              <TableCell align="right">등록일</TableCell>
-              <TableCell align="right">공개여부</TableCell>
-              <TableCell align="right">수정 / 삭제</TableCell>
+              <TableCell>
+                <Typography noWrap fontWeight={600}>
+                  NO
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography noWrap fontWeight={600}>
+                  제품명
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography noWrap fontWeight={600}>
+                  사이즈
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography noWrap fontWeight={600}>
+                  용량
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography noWrap fontWeight={600}>
+                  소재
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography noWrap fontWeight={600}>
+                  설명
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography noWrap fontWeight={600}>
+                  대분류
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography noWrap fontWeight={600}>
+                  중분류
+                </Typography>
+              </TableCell>
+              <TableCell align="right">
+                <Typography noWrap fontWeight={600}>
+                  등록일
+                </Typography>
+              </TableCell>
+              <TableCell align="right">
+                <Typography noWrap fontWeight={600}>
+                  공개여부
+                </Typography>
+              </TableCell>
+              <TableCell align="right">
+                <Typography noWrap fontWeight={600}>
+                  수정 / 삭제
+                </Typography>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -232,15 +280,22 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ products }) => {
                     </Typography> */}
                   </TableCell>
                   <TableCell>
-                    <Typography
-                      variant="body1"
-                      fontWeight="bold"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {product.name}
-                    </Typography>
+                    <Box display="inline-flex" alignItems="center">
+                      <img
+                        src={`https://picsum.photos/40/40?random=${Math.random()}`} // 랜덤 이미지 URL에 랜덤한 쿼리스트링을 추가하여 매번 다른 이미지를 가져옴
+                        alt="제품 이미지"
+                        style={{ width: 40, height: 40, marginRight: 8 }}
+                      />
+                      <Typography
+                        variant="body1"
+                        fontWeight="bold"
+                        color="text.primary"
+                        gutterBottom
+                        noWrap
+                      >
+                        {product.name}
+                      </Typography>
+                    </Box>
                   </TableCell>
                   <TableCell>
                     <Typography

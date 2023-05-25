@@ -6,7 +6,7 @@ function ProductsList() {
   const products: Product[] = [
     {
       _id: "1",
-      id: "VUVX709ET7BY",
+      id: "131",
       imageUrl: "",
       name: "립스틱",
       size: "70*70",
@@ -15,12 +15,12 @@ function ProductsList() {
       description: "설명이 블라블라짱",
       status: "공개",
       uploadDate: "2023-03-11",
-      mainCategory: "화장품",
-      subCategory: "용기",
+      MainCategory: "화장품",
+      SubCategory: "용기",
     },
     {
       _id: "2",
-      id: "VKDKJFWDE032",
+      id: "87",
       imageUrl: "",
       name: "마스카라",
       size: "70*70",
@@ -29,8 +29,8 @@ function ProductsList() {
       description: "설명이 블라블라짱",
       status: "숨김",
       uploadDate: "2023-03-11",
-      mainCategory: "화장품",
-      subCategory: "용기",
+      MainCategory: "화장품",
+      SubCategory: "용기",
     },
   ];
 

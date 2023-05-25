@@ -14,7 +14,6 @@ import { SidebarContext } from "../../../../contexts/SidebarContext";
 
 import ApartmentRoundedIcon from "@mui/icons-material/ApartmentRounded";
 import InventoryRoundedIcon from "@mui/icons-material/InventoryRounded";
-import TableChartTwoToneIcon from "@mui/icons-material/TableChartTwoTone";
 import NewspaperRoundedIcon from "@mui/icons-material/NewspaperRounded";
 import GroupAddRoundedIcon from "@mui/icons-material/GroupAddRounded";
 import AutoAwesomeMotionRoundedIcon from "@mui/icons-material/AutoAwesomeMotionRounded";

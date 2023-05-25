@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-
 import {
   Card,
   CardHeader,
@@ -13,8 +12,8 @@ import {
 } from "@mui/material";
 
 import { MainCategory } from "@src/types/product";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 
@@ -49,7 +48,7 @@ const CategoryCard: FC<RecentOrdersTableProps> = ({ categories }) => {
         justifyContent="space-between"
         width={160}
       >
-        <CardHeader title="카테고리" width={20} />
+        <CardHeader title="카테고리" width={20} sx={{ minWidth: 20 }} />
         <Button>
           <SettingsOutlinedIcon />
         </Button>
