@@ -1,14 +1,16 @@
 export type ProductStatus = "숨김" | "공개";
 
-export type subCategory = string;
-
-export type mainCategory = {
+export interface Category {
   id: number;
   name: "string";
   level: "string";
-  children: subCategory[];
-};
+}
 
+export type SubCategory = Category;
+
+export interface MainCategory extends Category {
+  children?: SubCategory[];
+}
 
 export interface Product {
   _id: number;
@@ -20,7 +22,7 @@ export interface Product {
   partMaterial: string;
   description: string;
   //등록일
-  category: mainCategory;
+  category: MainCategory;
   isHidden: boolean;
 }
 
@@ -31,7 +33,7 @@ export interface Product {
 //   uploadDate: string;
 //   productID: string;
 //   productName: string;
-//   mainCategory: string;
-//   subCategory: string;
+//   MainCategory: string;
+//   SubCategory: string;
 
 // }
