@@ -17,6 +17,10 @@ const Loader = (Component) => (props) =>
 // pages
 
 const Product = Loader(lazy(() => import("./pages/Procducts")));
+const CreateProduct = Loader(
+  lazy(() => import("./pages/Procducts/CreateProduct"))
+);
+const Client = Loader(lazy(() => import("./pages/Client")));
 
 const routes: RouteObject[] = [
   {
@@ -35,10 +39,11 @@ const routes: RouteObject[] = [
         path: "products",
         element: <Product />,
       },
-      // {
-      //   path: "client",
-      //   element: <Client />,
-      // },
+      { path: "products/create", element: <CreateProduct /> },
+      {
+        path: "client",
+        element: <Client />,
+      },
       // {
       //   path: "news",
       //   element: <News />,
