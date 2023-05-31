@@ -18,15 +18,25 @@ import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 
+import AddNewClientModal from "src/components/Modal/AddClientModal";
+
 interface ClientProps {
   clients: Client[];
 }
 
 const ClientCard: FC<ClientProps> = ({ clients }) => {
+  const [OpenAddNewClientModal, setOpenAddNewClientModal] = useState(false);
+  const handleOpenAddNewClientModal = () => {
+    setOpenAddNewClientModal(true);
+  };
+  const handleCloseAddNewClientModal = () => {
+    setOpenAddNewClientModal(false);
+  };
+
   return (
     <>
       <Grid container spacing={3}>
-        <Grid xs={12} sm={6} md={3} item>
+        <Grid xs={12} sm={6} md={3} item onClick={handleOpenAddNewClientModal}>
           <Tooltip arrow title="고객사 추가하기">
             <CardAddAction>
               <CardActionArea
@@ -43,6 +53,11 @@ const ClientCard: FC<ClientProps> = ({ clients }) => {
             </CardAddAction>
           </Tooltip>
         </Grid>
+        <AddNewClientModal
+          open={OpenAddNewClientModal}
+          title="새 고객사 추가하기"
+          onClose={handleCloseAddNewClientModal}
+        />
         {clients.map((client) => (
           <Grid xs={12} sm={6} md={3} item>
             <Card
