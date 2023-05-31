@@ -61,7 +61,7 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/client"
+                  to="/clients"
                   startIcon={<GroupAddRoundedIcon />}
                 >
                   고객사
@@ -83,7 +83,7 @@ function SidebarMenu() {
                   disableRipple
                   component={RouterLink}
                   onClick={closeSidebar}
-                  to="/popup"
+                  to="/popups"
                   startIcon={<AutoAwesomeMotionRoundedIcon />}
                 >
                   팝업
