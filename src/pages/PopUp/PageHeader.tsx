@@ -1,10 +1,18 @@
+import { useState } from "react";
 import { Typography, Button, Grid } from "@mui/material";
 
-import { NavLink as RouterLink } from "react-router-dom";
-
+import AddNewPopUpModal from "src/components/Modal/AddPopUpModal";
 import AddTwoToneIcon from "@mui/icons-material/AddTwoTone";
 
 function PageHeader() {
+  const [OpenAddNewPopUpModal, setOpenAddNewPopUpModal] = useState(false);
+  const handleOpenAddNewPopUpModal = () => {
+    setOpenAddNewPopUpModal(true);
+  };
+  const handleCloseAddNewPopUpModal = () => {
+    setOpenAddNewPopUpModal(false);
+  };
+
   return (
     <Grid container justifyContent="space-between" alignItems="center">
       <Grid item>
@@ -17,11 +25,15 @@ function PageHeader() {
           sx={{ mt: { xs: 2, md: 0 } }}
           variant="contained"
           startIcon={<AddTwoToneIcon fontSize="small" />}
-          component={RouterLink}
-          to="/products/create"
+          onClick={handleOpenAddNewPopUpModal}
         >
           팝업추가
         </Button>
+        <AddNewPopUpModal
+          title="새 팝업 추가"
+          open={OpenAddNewPopUpModal}
+          onClose={handleCloseAddNewPopUpModal}
+        />
       </Grid>
     </Grid>
   );
