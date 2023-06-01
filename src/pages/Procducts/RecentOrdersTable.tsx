@@ -22,16 +22,18 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Grid,
 } from "@mui/material";
 
 import Label from "../../components/Label";
 import { Product, ProductStatus } from "src/types/product";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
+import PreviewRoundedIcon from "@mui/icons-material/PreviewRounded";
 import BulkActions from "./BulkActions";
+import Search from "src/components/Search";
 
 interface RecentOrdersTableProps {
-  className?: string;
   products: Product[];
 }
 
@@ -43,10 +45,12 @@ const getStatusLabel = (productStatus: ProductStatus): JSX.Element => {
   const map = {
     숨김: {
       text: "숨김",
+      isHidden: true,
       color: "error",
     },
     공개: {
       text: "공개",
+      isHidden: false,
       color: "success",
     },
   };
@@ -158,8 +162,18 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ products }) => {
       )}
       {!selectedBulkActions && (
         <CardHeader
+          title={
+            <Grid container alignItems="center">
+              <Grid item xs={3}>
+                <Typography variant="h4">제품목록</Typography>
+              </Grid>
+              <Grid item xs={9}>
+                <Search />
+              </Grid>
+            </Grid>
+          }
           action={
-            <Box width={150}>
+            <Box width={150} marginTop={1}>
               <FormControl fullWidth variant="outlined">
                 <InputLabel>공개여부</InputLabel>
                 <Select
@@ -177,7 +191,6 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ products }) => {
               </FormControl>
             </Box>
           }
-          title="제품목록"
         />
       )}
       <Divider />
@@ -295,6 +308,20 @@ const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ products }) => {
                       >
                         {product.name}
                       </Typography>
+                      <Tooltip title="상세페이지 보기" arrow>
+                        <IconButton
+                          sx={{
+                            "&:hover": {
+                              background: theme.colors.primary.lighter,
+                            },
+                            color: theme.palette.primary.light,
+                          }}
+                          color="inherit"
+                          size="small"
+                        >
+                          <PreviewRoundedIcon />
+                        </IconButton>
+                      </Tooltip>
                     </Box>
                   </TableCell>
                   <TableCell>
