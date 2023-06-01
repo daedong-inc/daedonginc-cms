@@ -1,8 +1,5 @@
-import { Typography, Button, Grid, useTheme } from "@mui/material";
+import { Typography, Grid, useTheme } from "@mui/material";
 import { NavLink as RouterLink } from "react-router-dom";
-
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Search from "../../components/Search";
 
 function PageHeader() {
   const theme = useTheme();
