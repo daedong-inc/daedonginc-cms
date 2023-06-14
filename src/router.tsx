@@ -15,6 +15,7 @@ const Loader = (Component) => (props) =>
   );
 
 // pages
+const Login = Loader(lazy(() => import("./pages/Login")));
 const Product = Loader(lazy(() => import("./pages/Procducts")));
 const CreateProduct = Loader(
   lazy(() => import("./pages/Procducts/CreateProduct"))
@@ -25,6 +26,41 @@ const PopUp = Loader(lazy(() => import("./pages/PopUp")));
 const routes: RouteObject[] = [
   {
     path: "",
+    element: <BaseLayout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "overview",
+        element: <Navigate to="/" replace />,
+      },
+      // {
+      //   path: 'status',
+      //   children: [
+      //     {
+      //       path: '',
+      //       element: <Navigate to="404" replace />
+      //     },
+      //     {
+      //       path: '404',
+      //       element: <Status404 />
+      //     },
+      //     {
+      //       path: '500',
+      //       element: <Status500 />
+      //     },
+      //   ]
+      // },
+      // {
+      //   path: '*',
+      //   element: <Status404 />
+      // }
+    ],
+  },
+  {
+    path: "dashboards",
     element: <SidebarLayout />,
     children: [
       {
