@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 // material-ui
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 // project import
 import AuthCard from "./AuthCard";
@@ -23,7 +23,7 @@ const AuthWrapper = ({ children }) => (
         minHeight: "100vh",
       }}
     >
-      <Grid item xs={12} sx={{ ml: 3, mt: 3 }}>
+      <Grid xs={12} sx={{ ml: 3, mt: 3 }}>
         <Logo />
       </Grid>
       <Grid item xs={12}>
