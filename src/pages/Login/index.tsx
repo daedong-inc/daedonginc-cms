@@ -31,15 +31,6 @@ const Login = () => {
             sx={{ mb: { xs: -0.5, sm: 0.5 } }}
           >
             <Typography variant="h3">로그인</Typography>
-            <Typography
-              component={Link}
-              to="/"
-              variant="body1"
-              sx={{ textDecoration: "none" }}
-              color="primary"
-            >
-              계정 잃어버림?
-            </Typography>
           </Stack>
         </Grid>
         <Grid item xs={12}>

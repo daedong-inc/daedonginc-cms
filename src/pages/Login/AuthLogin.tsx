@@ -1,39 +1,28 @@
-import React from "react";
+import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
 // material-ui
 import {
   Button,
-  Checkbox,
-  Divider,
-  FormControlLabel,
   FormHelperText,
   Grid,
-  Link,
   IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
   Stack,
-  Typography,
 } from "@mui/material";
 
 // third party
 import * as Yup from "yup";
 import { Formik } from "formik";
 
-// project import
-import AnimateButton from "components/@extended/AnimateButton";
-
 // assets
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-// ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
-  const [checked, setChecked] = React.useState(false);
-
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -42,13 +31,13 @@ const AuthLogin = () => {
     <>
       <Formik
         initialValues={{
-          id: "user",
-          password: "password",
+          id: "string",
+          password: "string",
           submit: null,
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().max(255).required("Email is required"),
-          password: Yup.string().max(255).required("Password is required"),
+          id: Yup.string().max(255).required("아이디를 입력해주세요."),
+          password: Yup.string().max(255).required("패스워드를 입력해주세요."),
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
@@ -74,12 +63,11 @@ const AuthLogin = () => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="email-login">Email Address</InputLabel>
+                  <InputLabel>ID</InputLabel>
                   <OutlinedInput
-                    id="email-login"
-                    type="email"
+                    id="id"
                     value={values.id}
-                    name="email"
+                    name="id"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     placeholder="Enter email address"
@@ -136,45 +124,12 @@ const AuthLogin = () => {
                   )}
                 </Stack>
               </Grid>
-
-              <Grid item xs={12} sx={{ mt: -1 }}>
-                <Stack
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  spacing={2}
-                >
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={checked}
-                        onChange={(event) => setChecked(event.target.checked)}
-                        name="checked"
-                        color="primary"
-                        size="small"
-                      />
-                    }
-                    label={
-                      <Typography variant="h6">로그인 상태유지</Typography>
-                    }
-                  />
-                  <Link
-                    variant="h6"
-                    component={RouterLink}
-                    to=""
-                    color="text.primary"
-                  >
-                    비번잊음?
-                  </Link>
-                </Stack>
-              </Grid>
               {errors.submit && (
                 <Grid item xs={12}>
                   <FormHelperText error>{errors.submit}</FormHelperText>
                 </Grid>
               )}
               <Grid item xs={12}>
-                {/* <AnimateButton> */}
                 <Button
                   disableElevation
                   disabled={isSubmitting}
@@ -186,7 +141,6 @@ const AuthLogin = () => {
                 >
                   로그인
                 </Button>
-                {/* </AnimateButton> */}
               </Grid>
             </Grid>
           </form>

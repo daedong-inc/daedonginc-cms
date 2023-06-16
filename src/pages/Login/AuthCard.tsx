@@ -1,14 +1,7 @@
 import PropTypes from "prop-types";
 
 // material-ui
-import {
-  Box,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Typography,
-} from "@mui/material";
+import { Box, Card } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 // ==============================|| AUTHENTICATION - CARD WRAPPER ||============================== //
