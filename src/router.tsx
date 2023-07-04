@@ -6,6 +6,7 @@ import SidebarLayout from "./layouts/SidebarLayout";
 import BaseLayout from "./layouts/BaseLayout";
 
 import SuspenseLoader from "./components/SuspenseLoader";
+import AuthHOC from "./pages/Login/AuthHOC";
 
 const Loader = (Component) => (props) =>
   (
@@ -26,42 +27,21 @@ const PopUp = Loader(lazy(() => import("./pages/PopUp")));
 const routes: RouteObject[] = [
   {
     path: "",
-    element: <BaseLayout />,
+    element: <AuthHOC component={BaseLayout} />,
     children: [
+      {
+        path: "/",
+        element: <Navigate to="/dashboards" replace />,
+      },
       {
         path: "/login",
         element: <Login />,
       },
-      {
-        path: "overview",
-        element: <Navigate to="/" replace />,
-      },
-      // {
-      //   path: 'status',
-      //   children: [
-      //     {
-      //       path: '',
-      //       element: <Navigate to="404" replace />
-      //     },
-      //     {
-      //       path: '404',
-      //       element: <Status404 />
-      //     },
-      //     {
-      //       path: '500',
-      //       element: <Status500 />
-      //     },
-      //   ]
-      // },
-      // {
-      //   path: '*',
-      //   element: <Status404 />
-      // }
     ],
   },
   {
     path: "dashboards",
-    element: <SidebarLayout />,
+    element: <AuthHOC component={SidebarLayout} />,
     children: [
       {
         path: "",
@@ -93,3 +73,25 @@ const routes: RouteObject[] = [
 ];
 
 export default routes;
+
+// {
+//   path: 'status',
+//   children: [
+//     {
+//       path: '',
+//       element: <Navigate to="404" replace />
+//     },
+//     {
+//       path: '404',
+//       element: <Status404 />
+//     },
+//     {
+//       path: '500',
+//       element: <Status500 />
+//     },
+//   ]
+// },
+// {
+//   path: '*',
+//   element: <Status404 />
+// }

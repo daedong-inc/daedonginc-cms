@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User, UserLoginForm } from "@types/user";
+import { User, UserLoginForm } from "types/user";
 
 export async function requestLogin(loginInfo: UserLoginForm) {
   const bodyData = JSON.stringify(loginInfo);
@@ -10,7 +10,6 @@ export async function requestLogin(loginInfo: UserLoginForm) {
         "Content-Type": "application/json",
       },
     });
-    sessionStorage.setItem("userToken", data.token);
     return data;
   } catch (err) {
     console.log(err);

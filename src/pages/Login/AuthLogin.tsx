@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import * as Api from "src/services/Api";
+import Cookies from "js-cookie";
+import { AxiosError } from "axios";
 
 // material-ui
 import {
@@ -26,29 +29,45 @@ const AuthLogin = () => {
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
+  const navigate = useNavigate();
+  const handleSubmitLogin = async (
+    values: { name: string; password: string },
+    { setErrors, setStatus, setSubmitting }: any
+  ) => {
+    try {
+      const res = await Api.post("api/v1/users/login", values, false, true);
+      if (res.status === 200) {
+        const token = res.data.data.token;
+        Cookies.set("accessToken", token.accessToken, {
+          expires: token.accessTokenAge,
+        });
+
+        Cookies.set("refreshToken", token.refreshToken, {
+          expires: token.refreshTokenAge,
+        });
+        navigate("/dashboards");
+      }
+      setStatus({ success: true });
+      setSubmitting(false);
+    } catch (err: AxiosError) {
+      setStatus({ success: false });
+      setErrors({ submit: err.response?.data.reason });
+      setSubmitting(false);
+    }
+  };
 
   return (
     <>
       <Formik
         initialValues={{
-          id: "string",
+          name: "string",
           password: "string",
-          submit: null,
         }}
         validationSchema={Yup.object().shape({
-          id: Yup.string().max(255).required("아이디를 입력해주세요."),
+          name: Yup.string().max(255).required("아이디를 입력해주세요."),
           password: Yup.string().max(255).required("패스워드를 입력해주세요."),
         })}
-        onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-          try {
-            setStatus({ success: false });
-            setSubmitting(false);
-          } catch (err) {
-            setStatus({ success: false });
-            setErrors({ submit: err.message });
-            setSubmitting(false);
-          }
-        }}
+        onSubmit={handleSubmitLogin}
       >
         {({
           errors,
@@ -65,21 +84,21 @@ const AuthLogin = () => {
                 <Stack spacing={1}>
                   <InputLabel>ID</InputLabel>
                   <OutlinedInput
-                    id="id"
-                    value={values.id}
-                    name="id"
+                    id="id-name"
+                    value={values.name}
+                    name="name"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="Enter email address"
+                    placeholder="아이디를 입력해주세요."
                     fullWidth
-                    error={Boolean(touched.id && errors.id)}
+                    error={Boolean(touched.name && errors.name)}
                   />
-                  {touched.id && errors.id && (
+                  {touched.name && errors.name && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-email-login"
                     >
-                      {errors.id}
+                      {errors.name}
                     </FormHelperText>
                   )}
                 </Stack>
@@ -112,7 +131,7 @@ const AuthLogin = () => {
                         </IconButton>
                       </InputAdornment>
                     }
-                    placeholder="Enter password"
+                    placeholder="패스워드를 입력해주세요."
                   />
                   {touched.password && errors.password && (
                     <FormHelperText

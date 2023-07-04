@@ -10,7 +10,7 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ width = 200, height = 100 }) => {
   return (
     <LogoWrapper to="/">
-      <img src={LogoSvg} alt="Logo" style={{ width: "100%", height: "100%" }} />
+      <img src={LogoSvg} alt="Logo" style={{ width, height }} />
     </LogoWrapper>
   );
 };
