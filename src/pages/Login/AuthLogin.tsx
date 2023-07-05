@@ -35,7 +35,7 @@ const AuthLogin = () => {
     { setErrors, setStatus, setSubmitting }: any
   ) => {
     try {
-      const res = await Api.post("api/v1/users/login", values, false, true);
+      const res = await Api.post("users/login", values, false, true);
       if (res.status === 200) {
         const token = res.data.data.token;
         Cookies.set("accessToken", token.accessToken, {

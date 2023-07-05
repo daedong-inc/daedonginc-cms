@@ -2,7 +2,10 @@ import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import Cookies from "js-cookie";
 
 // 환경 변수에 접근합니다.
-const serverUrl = import.meta.env.VITE_DEV_SERVER + "/";
+const serverUrl =
+  import.meta.env.VITE_DEV_SERVER +
+  "/" +
+  import.meta.env.VITE_backendPortNumber;
 async function get(endpoint: string, params?: string) {
   console.log(`GET 요청 ${serverUrl + endpoint}`);
   return axios.get(
