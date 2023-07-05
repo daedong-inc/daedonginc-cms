@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 import { NavLink } from "react-router-dom";
-
+import { logoutAction } from "src/features/auth/logout";
 import {
   Avatar,
   Box,
@@ -16,7 +16,6 @@ import {
   Typography,
 } from "@mui/material";
 
-import InboxTwoToneIcon from "@mui/icons-material/InboxTwoTone";
 import { styled } from "@mui/material/styles";
 import ExpandMoreTwoToneIcon from "@mui/icons-material/ExpandMoreTwoTone";
 import AccountBoxTwoToneIcon from "@mui/icons-material/AccountBoxTwoTone";
@@ -131,7 +130,7 @@ function HeaderUserbox() {
         </List>
         <Divider />
         <Box sx={{ m: 1 }}>
-          <Button color="primary" fullWidth>
+          <Button color="primary" fullWidth onClick={() => logoutAction()}>
             <LockOpenTwoToneIcon sx={{ mr: 1 }} />
             로그아웃
           </Button>
