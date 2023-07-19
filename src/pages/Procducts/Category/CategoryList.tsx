@@ -1,30 +1,24 @@
+import React, { useEffect, useState } from "react";
 import { Card } from "@mui/material";
-import { MainCategory } from "src/types/product";
+import { Category } from "src/types/product";
 import CategoryTable from "./CategoryTable";
+import { getCompleteCategory } from "src/services/category";
 
 function ProductsList() {
-  const categories: MainCategory[] = [
-    {
-      id: 0,
-      name: "대분류1",
-      level: "레벨?",
-      children: [
-        { id: 1, name: "중분류1", level: "레벨?" },
-        { id: 2, name: "중분류2", level: "레벨?" },
-        { id: 3, name: "중분류3", level: "레벨?" },
-      ],
-    },
-    {
-      id: 5,
-      name: "대분류2",
-      level: "레벨?",
-      children: [
-        { id: 6, name: "중분류5", level: "레벨?" },
-        { id: 7, name: "중분류6", level: "레벨?" },
-        { id: 8, name: "중분류7", level: "레벨?" },
-      ],
-    },
-  ];
+  const [categories, setCategories] = useState([]);
+  
+  async function getCategory() {
+    try {
+      const res = await getCompleteCategory();
+      setCategories(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getCategory();
+  }, []);
 
   return (
     <Card>

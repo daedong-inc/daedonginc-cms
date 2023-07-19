@@ -1,16 +1,20 @@
+import { NumberSchema } from "yup";
+
 export type ProductStatus = "숨김" | "공개";
 
 export interface Category {
-  id: number;
-  name: "string";
-  level: "string";
+  categoryId: number;
+  categoryLevel: "PARENT" | "CHILD";
+  categoryName: string;
+  parentId: number | null;
+  children: [] | Category[];
 }
 
-export type SubCategory = Category;
+// export type SubCategory = Category;
 
-export interface MainCategory extends Category {
-  children?: SubCategory[];
-}
+// export interface MainCategory extends Category {
+//   children: SubCategory[];
+// }
 
 export interface Product {
   _id: number;
@@ -22,7 +26,7 @@ export interface Product {
   partMaterial: string;
   description: string;
   //등록일
-  category: MainCategory;
+  category: Category;
   isHidden: boolean;
 }
 

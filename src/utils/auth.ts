@@ -1,6 +1,5 @@
 import Cookies from "js-cookie";
-
-import { AccessToken, RefreshToken } from "constants/auth";
+import { AccessToken, RefreshToken } from "src/constants/auth";
 
 export const isAuthenticated = () => {
   const loggedInUser = Cookies.get("accessToken");
